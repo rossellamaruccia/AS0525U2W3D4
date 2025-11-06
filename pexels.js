@@ -20,7 +20,7 @@ const getPics = function () {
 
     .then((images) => {
       const photosArray = { ...images.photos }
-      console.log(photosArray)
+      // console.log(photosArray)
       let imgsArray = document.getElementsByTagName("img")
       randomButton.addEventListener(
         "click",
@@ -39,7 +39,7 @@ const getPics = function () {
 
 getPics()
 
-let secondaryButton = document.getElementById('secondaryButton')
+let secondaryButton = document.getElementById("secondaryButton")
 
 const getSecondaryPics = function () {
   fetch("https://api.pexels.com/v1/search?query=storm", {
@@ -57,7 +57,7 @@ const getSecondaryPics = function () {
 
     .then((images) => {
       const photosArray = { ...images.photos }
-      console.log(photosArray)
+      // console.log(photosArray)
       let imgsArray = document.getElementsByTagName("img")
       secondaryButton.addEventListener(
         "click",
@@ -75,3 +75,24 @@ const getSecondaryPics = function () {
 }
 
 getSecondaryPics()
+
+let editButtons = document.getElementsByClassName("btn")
+console.log(editButtons)
+
+const switchBtn = function () {
+  for (let i = 0; i < editButtons.length; i++)
+    if (editButtons[i].innerText === "Edit") {
+      editButtons[i].innerText = "Hide"
+      editButtons[i].addEventListener(
+        "click",
+        (hide = () => {
+          editButtons[
+            i
+          ].parentElement.parentElement.parentElement.parentElement.parentElement.style.display =
+            "none"
+        })
+      )
+    }
+}
+
+switchBtn()

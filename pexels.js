@@ -3,6 +3,7 @@
 // dai risultati di ricerca forniti dalla chiamata API:
 
 const randomButton = document.getElementById("randomButton")
+let smalls = document.getElementsByTagName("small")
 
 const getPics = function () {
   fetch("https://api.pexels.com/v1/search?query=clouds", {
@@ -20,13 +21,15 @@ const getPics = function () {
 
     .then((images) => {
       const photosArray = { ...images.photos }
-      // console.log(photosArray)
+      console.log(photosArray)
       let imgsArray = document.getElementsByTagName("img")
       randomButton.addEventListener(
         "click",
         (changeImg = () => {
           for (let i = 0; i < imgsArray.length; i++) {
             imgsArray[i].src = photosArray[i].src.medium
+            
+            smalls[i].innerText = photosArray[i].id
           }
         })
       )
@@ -64,6 +67,7 @@ const getSecondaryPics = function () {
         (changeImg = () => {
           for (let i = 0; i < imgsArray.length; i++) {
             imgsArray[i].src = photosArray[i].src.medium
+            smalls[i].innerText = photosArray[i].id
           }
         })
       )
@@ -92,6 +96,7 @@ const switchBtn = function () {
             "none"
         })
       )
+    } else {
     }
 }
 
